@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>316715206560-ibl056ghh6jh7g5iojm70gngqdif59b4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.316715206560-ibl056ghh6jh7g5iojm70gngqdif59b4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDVNUpHT75AEtDF1bGHiiGC-BjPiZQlsKo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>316715206560</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.coffeeMaker.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>mrrobot-coffeemaker</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mrrobot-coffeemaker.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:316715206560:ios:87a93120c1e8011df106c5</string>
+	<key>DATABASE_URL</key>
+	<string>https://mrrobot-coffeemaker-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
