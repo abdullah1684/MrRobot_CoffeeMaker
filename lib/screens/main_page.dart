@@ -16,7 +16,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-final String path = '/test2/boolean';
+final String path = '/test2/bool';
 
 sendBooleanValue(bool value) async {
   await database.child(path).set(value).then((_) {
@@ -29,10 +29,10 @@ sendBooleanValue(bool value) async {
 Future<void> _mdri() async {
   final user = await _firebase.signInWithEmailAndPassword(
       email: "test@gmail.com", password: "12345678");
-  DatabaseReference ref = FirebaseDatabase.instance.ref("users/123");
+  DatabaseReference ref = FirebaseDatabase.instance.ref("users/321");
 
   await ref.set({
-    "name": "John",
+    "name": "ahmed",
     "age": 18,
     "address": {"line1": "100 Mountain View"}
   });
