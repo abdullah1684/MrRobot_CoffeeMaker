@@ -1,9 +1,24 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+void _submit() async {
+  final url =
+      Uri.https("mrrobot-coffeemaker-default-rtdb.firebaseio.com", "/test");
+  final response = await http.get(url);
+  final extractedData = json.decode(response.body);
+}
+
+class _MainPageState extends State<MainPage> {
+  var _isCoffee = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +34,10 @@ class MainPage extends StatelessWidget {
               'assets/images/coffeeMaker.jpg',
             ),
           ),
-          Center(
+          const Center(
             child: ElevatedButton(
-              onPressed: () {},
-              child: const SizedBox(
+              onPressed: _submit,
+              child: SizedBox(
                 width: 120,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
