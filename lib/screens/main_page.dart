@@ -16,9 +16,12 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-final String path = '/test2/bool';
+final String path = '/make/bool';
 
 sendBooleanValue(bool value) async {
+  final user = await _firebase.signInWithEmailAndPassword(
+      email: "test@gmail.com", password: "12345678");
+
   await database.child(path).set(value).then((_) {
     print('Boolean value sent successfully!');
   }).catchError((error) {
@@ -26,20 +29,8 @@ sendBooleanValue(bool value) async {
   });
 }
 
-Future<void> _mdri() async {
-  final user = await _firebase.signInWithEmailAndPassword(
-      email: "test@gmail.com", password: "12345678");
-  DatabaseReference ref = FirebaseDatabase.instance.ref("users/321");
-
-  await ref.set({
-    "name": "ahmed",
-    "age": 18,
-    "address": {"line1": "100 Mountain View"}
-  });
-}
-
 class _MainPageState extends State<MainPage> {
-  var _isCoffee = true;
+  var _isCoffee = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +48,12 @@ class _MainPageState extends State<MainPage> {
           ),
           Center(
             child: ElevatedButton(
-              onPressed: _mdri,
+              onPressed: () {
+                setState(() {
+                  _isCoffee = !_isCoffee;
+                });
+                sendBooleanValue(_isCoffee);
+              },
               child: SizedBox(
                 width: 120,
                 child: Row(
