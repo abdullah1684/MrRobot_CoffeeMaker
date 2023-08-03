@@ -1,7 +1,13 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+final _firebase = FirebaseAuth.instance;
+final DatabaseReference database = FirebaseDatabase.instance.reference();
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -10,15 +16,30 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-void _submit() async {
-  final url =
-      Uri.https("mrrobot-coffeemaker-default-rtdb.firebaseio.com", "/test");
-  final response = await http.get(url);
-  final extractedData = json.decode(response.body);
+final String path = '/test2/boolean';
+
+sendBooleanValue(bool value) async {
+  await database.child(path).set(value).then((_) {
+    print('Boolean value sent successfully!');
+  }).catchError((error) {
+    print('Error sending boolean value: $error');
+  });
+}
+
+Future<void> _mdri() async {
+  final user = await _firebase.signInWithEmailAndPassword(
+      email: "test@gmail.com", password: "12345678");
+  DatabaseReference ref = FirebaseDatabase.instance.ref("users/123");
+
+  await ref.set({
+    "name": "John",
+    "age": 18,
+    "address": {"line1": "100 Mountain View"}
+  });
 }
 
 class _MainPageState extends State<MainPage> {
-  var _isCoffee = false;
+  var _isCoffee = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +55,9 @@ class _MainPageState extends State<MainPage> {
               'assets/images/coffeeMaker.jpg',
             ),
           ),
-          const Center(
+          Center(
             child: ElevatedButton(
-              onPressed: _submit,
+              onPressed: _mdri,
               child: SizedBox(
                 width: 120,
                 child: Row(
