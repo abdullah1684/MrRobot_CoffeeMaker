@@ -1,7 +1,6 @@
 # coffee_maker
 
-A new Flutter project.
-
+This project aims to connect flutter with ESP32 to control certain gadgets.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
